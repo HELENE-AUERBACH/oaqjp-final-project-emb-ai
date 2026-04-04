@@ -25,7 +25,20 @@ def emotion_detector(text_to_analyse):
     # Extracting required set of emotions,
     # including anger, disgust, fear, joy and sadness,
     # along with their scores from the resp
-    emotions = formatted_response['emotionPredictions'][0]['emotion']
-    dominant_emotion_key = max(emotions.items(), key=operator.itemgetter(1))[0]
-    emotions['dominant_emotion'] = dominant_emotion_key
+    #emotions = formatted_response['emotionPredictions'][0]['emotion']
+    #dominant_emotion_key = max(emotions.items(), key=operator.itemgetter(1))[0]
+    #emotions['dominant_emotion'] = dominant_emotion_key
+    emotions = {}
+    emotions['anger'] = None
+    emotions['disgust'] = None
+    emotions['fear'] = None
+    emotions['joy'] = None
+    emotions['sadness'] = None
+    emotions['dominant_emotion'] = None
+    if response.status_code != 400:
+        emotions = formatted_response['emotionPredictions'][0]['emotion']
+        dominant_emotion_key = max(emotions.items(), key=operator.itemgetter(1))[0]
+        emotions['dominant_emotion'] = dominant_emotion_key
+    # If the response status code is 400, set dictionary values for all keys being None
+    #  to manage blank entries from users
     return emotions

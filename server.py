@@ -22,8 +22,8 @@ def sent_detector():
     # Retrieve the text to analyze from the request arguments
     text_to_analyze = request.args.get('textToAnalyze')
 
-    if len(text_to_analyze) == 0:
-        return "None input! Try again."
+    #if len(text_to_analyze) == 0:
+    #    return "None input! Try again."
 
     # Pass the text to the emotion_detector function and store the response
     response = emotion_detector(text_to_analyze)
@@ -37,9 +37,9 @@ def sent_detector():
     dominant_emotion = response['dominant_emotion']
 
     # Return a formatted string with the emotions and dominant emotion
-    # Check if the dominant_emotion is None, indicating an error or invalid input
+    # Check if the dominant_emotion is None, indicating a blank entrie
     if dominant_emotion is None:
-        return "Invalid input! Try again."
+        return "<b>Invalid text! Please try again!</b>"
 
     # Return a formatted string with the emotions and dominant emotion
     return f"For the given statement, the system response is 'anger': {anger}, \
