@@ -44,7 +44,7 @@ def sent_detector():
     # Return a formatted string with the emotions and dominant emotion
     return f"For the given statement, the system response is 'anger': {anger}, \
         'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} and 'sadness': {sadness}. \
-        The dominant emotion is {dominant_emotion}."
+        The dominant emotion is <b>{dominant_emotion}</b>."
 
 @app.route("/")
 def render_index_page():
